@@ -33,10 +33,15 @@
 .menu-screen {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 24px 0 16px;
 }
 
 .menu-header {
-  padding: 28px 24px 12px;
+  width: 100%;
+  padding: 0 24px;
   text-align: center;
 }
 
@@ -47,8 +52,9 @@
 
 .menu-main {
   display: grid;
-  gap: 24px;
-  padding: 0 24px 24px;
+  gap: 18px;
+  width: 100%;
+  padding: 0 24px;
   justify-items: center;
 }
 
@@ -163,7 +169,7 @@
 }
 
 .menu-footer {
-  margin-top: auto;
+  width: 100%;
   padding: 0 16px 16px;
 }
 
