@@ -1,0 +1,424 @@
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(255, 238, 188, 0.92), rgba(255, 238, 188, 0) 35%),
+    linear-gradient(180deg, #ffecd1 0%, #ffd7a8 40%, #ffc271 100%);
+  color: #2e1f12;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #ef2c18 0%, #c30d03 100%);
+  color: #fff7e2;
+  z-index: 30;
+  animation: splash-fade 0.5s ease forwards 0.7s;
+}
+
+.splash-screen h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
+  letter-spacing: 0.08em;
+}
+
+.menu-screen,
+.game-screen {
+  min-height: 100vh;
+  opacity: 0;
+  animation: screen-fade 0.5s ease forwards 0.7s;
+}
+
+.menu-screen {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-header {
+  padding: 28px 24px 12px;
+  text-align: center;
+}
+
+.menu-header h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 8vw, 4.2rem);
+}
+
+.menu-main {
+  display: grid;
+  gap: 24px;
+  padding: 0 24px 24px;
+  justify-items: center;
+}
+
+.skin-panel,
+.overlay-card {
+  border: 2px solid rgba(95, 52, 23, 0.14);
+  background: rgba(255, 247, 232, 0.88);
+  box-shadow: 0 22px 50px rgba(116, 65, 25, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.skin-panel {
+  width: min(100%, 32rem);
+  padding: 20px;
+  border-radius: 28px;
+}
+
+.skin-panel.compact {
+  width: min(100%, 22rem);
+}
+
+.skin-display {
+  display: grid;
+  place-items: center;
+}
+
+.skin-display img {
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgba(84, 45, 16, 0.22));
+}
+
+.menu-buttons,
+.skin-selector,
+.overlay-actions,
+.controls {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.menu-buttons button,
+.overlay-actions button,
+.controls button,
+.skin-btn {
+  border: 0;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
+}
+
+.menu-buttons button,
+.overlay-actions button,
+.controls button {
+  padding: 0.95rem 1.35rem;
+  border-radius: 18px;
+  background: #da5318;
+  color: #fff8ea;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 10px 18px rgba(177, 77, 23, 0.22);
+}
+
+.menu-buttons button.secondary,
+.overlay-actions button.secondary,
+.controls button.active {
+  background: #7b3d1d;
+}
+
+.menu-buttons button:hover,
+.overlay-actions button:hover,
+.controls button:hover,
+.skin-btn:hover {
+  transform: translateY(-2px);
+}
+
+.skin-selector {
+  width: min(100%, 24rem);
+}
+
+.skin-btn {
+  width: 108px;
+  height: 108px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 2px solid transparent;
+}
+
+.skin-btn.selected {
+  border-color: #da5318;
+}
+
+.skin-btn img {
+  width: 70px;
+  height: auto;
+}
+
+.menu-notes {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 250, 241, 0.66);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.menu-notes p {
+  margin: 0;
+}
+
+.menu-footer {
+  margin-top: auto;
+  padding: 0 16px 16px;
+}
+
+.banner-ad {
+  display: block;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 30px rgba(99, 57, 27, 0.18);
+}
+
+.game-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+}
+
+.hud {
+  display: flex;
+  gap: 14px;
+  font-weight: 700;
+  color: #5f3b1b;
+}
+
+.hud.floating {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 247, 232, 0.84);
+  box-shadow: 0 10px 18px rgba(116, 65, 25, 0.14);
+}
+
+.game-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(220px, 280px);
+  gap: 18px;
+  justify-content: center;
+  align-items: start;
+}
+
+.game-wrapper.solo {
+  grid-template-columns: minmax(0, 360px);
+}
+
+.game-view {
+  display: flex;
+  justify-content: center;
+}
+
+.game-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 3px solid rgba(113, 62, 26, 0.16);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.8), transparent 25%),
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.55), transparent 18%),
+    linear-gradient(180deg, #8ed5ff 0%, #b5e4ff 44%, #fbe2a0 100%);
+  box-shadow: inset 0 -42px 0 rgba(249, 196, 88, 0.2);
+}
+
+.game-stage::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 84px;
+  background:
+    linear-gradient(180deg, rgba(255, 206, 106, 0) 0%, rgba(238, 180, 66, 0.5) 100%);
+}
+
+.platform,
+.player,
+.overlay-card {
+  position: absolute;
+}
+
+.platform {
+  left: 0;
+  top: 0;
+  border-radius: 999px;
+}
+
+.platform.wood {
+  background:
+    linear-gradient(180deg, #b77d51 0%, #8f592f 100%);
+  box-shadow:
+    inset 0 -4px 0 rgba(87, 45, 16, 0.35),
+    0 6px 12px rgba(67, 40, 17, 0.18);
+}
+
+.platform.moving {
+  background:
+    linear-gradient(180deg, #58b1ff 0%, #2679ec 100%);
+  box-shadow:
+    inset 0 -4px 0 rgba(24, 55, 112, 0.32),
+    0 6px 12px rgba(24, 55, 112, 0.2);
+}
+
+.platform.cloud {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6) 50%, transparent 52%),
+    radial-gradient(circle at 42% 26%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.65) 58%, transparent 60%),
+    radial-gradient(circle at 66% 32%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.65) 55%, transparent 57%),
+    linear-gradient(180deg, #f8fcff 0%, #d7e8fb 100%);
+  box-shadow: 0 4px 12px rgba(89, 124, 163, 0.18);
+}
+
+.platform.stone {
+  background:
+    linear-gradient(180deg, #9b9ca6 0%, #72737f 100%);
+  box-shadow:
+    inset 0 -4px 0 rgba(45, 46, 54, 0.32),
+    0 6px 12px rgba(45, 46, 54, 0.18);
+}
+
+.platform.spring {
+  background:
+    linear-gradient(180deg, #3fd475 0%, #119043 100%);
+  box-shadow:
+    inset 0 -4px 0 rgba(12, 90, 39, 0.32),
+    0 6px 12px rgba(12, 90, 39, 0.2);
+}
+
+.platform.spring::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: -10px;
+  height: 12px;
+  border-radius: 12px 12px 4px 4px;
+  background: #ffdb59;
+}
+
+.player {
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(75, 55, 31, 0.22));
+}
+
+.overlay-card {
+  left: 50%;
+  top: 50%;
+  width: min(80%, 280px);
+  padding: 24px;
+  border-radius: 24px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.overlay-card h2 {
+  margin: 0 0 10px;
+}
+
+.overlay-card p {
+  margin: 0 0 18px;
+}
+
+.controls {
+  justify-content: stretch;
+}
+
+.controls button {
+  flex: 1;
+  min-width: 0;
+  font-size: 1.5rem;
+  touch-action: none;
+}
+
+.controls.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  z-index: 2;
+  justify-content: space-between;
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.controls.overlay button {
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(218, 83, 24, 0.42);
+  box-shadow: 0 8px 20px rgba(177, 77, 23, 0.18);
+  color: rgba(255, 248, 234, 0.92);
+  text-shadow:
+    0 4px 14px rgba(56, 29, 11, 0.35),
+    0 0 10px rgba(255, 255, 255, 0.35);
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.controls.overlay button.active {
+  background: rgba(218, 83, 24, 0.58);
+  transform: scale(1.06);
+  color: #ffffff;
+}
+
+.arrow-icon {
+  width: 34px;
+  height: 34px;
+}
+
+@keyframes splash-fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes screen-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .game-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .game-screen,
+  .menu-main,
+  .menu-footer,
+  .menu-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .game-stage {
+    width: min(100%, 360px);
+    height: min(72vh, 640px);
+  }
+
+  .game-topbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hud {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+}
