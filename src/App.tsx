@@ -326,8 +326,16 @@ function advanceGame(state: GameState, controls: ControlState, delta: number): G
     Math.max(0, Math.round((START_PLAYER_Y - player.y) * 0.45)),
   );
 
-  const phase: GamePhase =
-    player.y > nextCameraY + VIEW_HEIGHT + 120 ? 'over' : state.phase;
+  const playerTopInView = player.y - nextCameraY;
+  const playerBottomInView = playerTopInView + player.height;
+  const playerRightInView = player.x + player.width;
+  const isPlayerOutsideView =
+    playerRightInView <= 0 ||
+    player.x >= VIEW_WIDTH ||
+    playerBottomInView <= 0 ||
+    playerTopInView >= VIEW_HEIGHT;
+
+  const phase: GamePhase = isPlayerOutsideView ? 'over' : state.phase;
 
   return {
     player,
